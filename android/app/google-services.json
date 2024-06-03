@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "955647790107",
+    "project_id": "arspace-server",
+    "storage_bucket": "arspace-server.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955647790107:android:1614f0f7058183c9823cbe",
+        "android_client_info": {
+          "package_name": "com.example.arspace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOQHGsA1DwurZDL2n1BpExRJQZhVirZ7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
