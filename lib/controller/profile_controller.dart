@@ -211,4 +211,43 @@ class ProfileController extends GetxController {
   }
 
 
+  Future<void> deleteAccont(BuildContext context) async {
+    var context = Get.context as BuildContext;
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Center(
+          child: LoadingAnimationWidget.threeRotatingDots(
+            color: ThemeProvider.loader_color,
+            size: Dimens.loder_size,
+          ),
+        ); // Display the custom loader
+      },
+    );
+
+    Response response = await parser.deleteAccount();
+    Navigator.of(context).pop();
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> myMap = Map<String, dynamic>.from(response.body);
+      logOutResponse = LogOutResponse.fromJson(myMap);
+      if (myMap['message'] != '') {
+        successToast(myMap['message'.tr]);
+      } else {
+        showToast('Something went wrong'.tr);
+      }
+      print("Log Out Response --->${logOutResponse.message.toString()}");
+      parser.clearAccount();
+      Get.offAllNamed(AppRouter.login);
+
+      update();
+    }
+    else {
+      ApiChecker.checkApi(response);
+    }
+    update();
+  }
+
+
 }

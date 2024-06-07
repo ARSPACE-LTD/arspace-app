@@ -26,6 +26,7 @@ class AppConstants {
   static const String ticket_list = 'tickets';
   static const String ticket_history = 'tickets?type=history';
   static const String delete_image = 'image';
+
 }
 
 

@@ -155,4 +155,5 @@ class AppString {
   static String upload_first_bill = "Upload your first bill";
   static String match_for_event = "Match For Event";
   static String bottleRock = "BottleRock NapaValley";
+  static String deleteAccount = "Delete Account";
 }

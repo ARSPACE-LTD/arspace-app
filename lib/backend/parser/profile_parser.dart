@@ -37,4 +37,10 @@ class ProfileParser {
       print("Clear failed or sharedPreferences is null.");
     }
   }
+
+  Future<Response> deleteAccount() async {
+    return await apiService.deletePrivate(AppConstants.get_user_profile_api,
+        sharedPreferencesManager.getString('token') ?? '');
+  }
+
 }

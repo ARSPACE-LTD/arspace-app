@@ -89,7 +89,7 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     {
       audioPlayerStates = List.filled(
           chatInboxController.roomChatList.length,
-          audioplayers.PlayerState.STOPPED),
+          audioplayers.PlayerState.stopped),
 
       print("======= call down function roomId"),
 
@@ -150,7 +150,7 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
 
             audioPlayerStates = List.filled(
                 chatInboxController.roomChatList.length,
-                audioplayers.PlayerState.STOPPED);
+                audioplayers.PlayerState.stopped);
 
             chatInboxController.update();
 
@@ -219,13 +219,24 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     );
   }
 
+  // void _play(String filePath, int index) {
+  //   // Stop all other players before starting a new one
+  //   _stopAllPlayers();
+  //   audioPlayer.play(filePath);
+  //   setState(() {
+  //     currentrecordingIndex = index;
+  //     audioPlayerStates[index] = audioplayers.PlayerState.playing;
+  //   });
+  // }
+
+
   void _play(String filePath, int index) {
     // Stop all other players before starting a new one
     _stopAllPlayers();
-    audioPlayer.play(filePath);
+    audioPlayer.play(filePath as audioplayers.Source);
     setState(() {
       currentrecordingIndex = index;
-      audioPlayerStates[index] = audioplayers.PlayerState.PLAYING;
+      audioPlayerStates[index] = audioplayers.PlayerState.playing;
     });
   }
 
@@ -234,10 +245,10 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     audioPlayer.pause();
     // Find the index of the currently playing item and update its state
     int playingIndex =
-    audioPlayerStates.indexOf(audioplayers.PlayerState.PLAYING);
+    audioPlayerStates.indexOf(audioplayers.PlayerState.playing);
     if (playingIndex != -1) {
       setState(() {
-        audioPlayerStates[playingIndex] = audioplayers.PlayerState.PAUSED;
+        audioPlayerStates[playingIndex] = audioplayers.PlayerState.paused;
       });
     }
   }
@@ -247,10 +258,10 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     audioPlayer.stop();
     // Find the index of the currently playing item and update its state
     int playingIndex =
-    audioPlayerStates.indexOf(audioplayers.PlayerState.PLAYING);
+    audioPlayerStates.indexOf(audioplayers.PlayerState.playing);
     if (playingIndex != -1) {
       setState(() {
-        audioPlayerStates[playingIndex] = audioplayers.PlayerState.STOPPED;
+        audioPlayerStates[playingIndex] = audioplayers.PlayerState.stopped;
       });
     }
   }
@@ -261,7 +272,7 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     setState(() {
       // Reset all player states to STOPPED
       audioPlayerStates = List.filled(chatInboxController.roomChatList.length,
-          audioplayers.PlayerState.STOPPED);
+          audioplayers.PlayerState.stopped);
     });
   }
 
@@ -692,14 +703,14 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
                               index] ==
                                   audioplayers
                                       .PlayerState
-                                      .PLAYING,
+                                      .playing,
                               onPressed: () {
                                 // Toggle play/pause for the specific chat item
                                 if (audioPlayerStates[
                                 index] ==
                                     audioplayers
                                         .PlayerState
-                                        .PLAYING) {
+                                        .playing) {
                                   _pause();
                                 } else {
                                   _play(
