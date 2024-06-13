@@ -1,4 +1,4 @@
-package com.example.arspace
+package com.arspace
 
 import io.flutter.embedding.android.FlutterActivity
 

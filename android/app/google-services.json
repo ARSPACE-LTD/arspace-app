@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:955647790107:android:1614f0f7058183c9823cbe",
+        "mobilesdk_app_id": "1:955647790107:android:e3fb087768d542d1823cbe",
         "android_client_info": {
-          "package_name": "com.example.arspace"
+          "package_name": "com.arspace"
         }
       },
       "oauth_client": [],
