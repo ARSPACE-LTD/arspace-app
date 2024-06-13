@@ -1,6 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel ;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+
 
 import '../backend/helper/app_router.dart';
 import '../controller/match_controller.dart';
@@ -27,7 +29,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
   double screenWidth = 0;
 
   int current = 0;
-  final CarouselController _controller = CarouselController();
+  final carousel.CarouselController _controller = carousel.CarouselController();
 
   final MatchDetailController matchDetailController =
   Get.put(MatchDetailController(parser: Get.find()));
@@ -92,10 +94,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             width: screenWidth,
             child: Stack(
                 children: [
-              CarouselSlider(
+                  carousel.CarouselSlider(
                 items: imageSliders,
                 carouselController: _controller,
-                options: CarouselOptions(
+                options: carousel.CarouselOptions(
                     autoPlay: true,
                     enlargeCenterPage: false,
                     aspectRatio: 0.80,

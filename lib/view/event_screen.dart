@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:arspace/backend/helper/app_router.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel ;
+
 import 'package:arspace/controller/event_controller.dart';
 import 'package:arspace/util/all_constants.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -12,13 +13,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:share_plus/share_plus.dart';
-
 import '../backend/helper/Button.dart';
 import '../util/dimens.dart';
 import '../util/theme.dart';
 import '../widgets/commontext.dart';
 import '../widgets/custom_text_field.dart';
-import '../widgets/custom_textfield_with_validation.dart';
 import 'connectivity_service.dart';
 
 class EventScreen extends StatefulWidget {
@@ -34,7 +33,7 @@ class _EventScreenState extends State<EventScreen> {
   double screenHeight = 0;
   double screenWidth = 0;
   int current = 0;
-  final CarouselController _controller = CarouselController();
+  final carousel.CarouselController _controller = carousel.CarouselController();
   final EventController eventController =
       Get.put(EventController(parser: Get.find()));
   String UUId = "";
@@ -265,10 +264,10 @@ class _EventScreenState extends State<EventScreen> {
                                         child: ImageFiltered(
                                           imageFilter: ImageFilter.blur(
                                               sigmaX: 10, sigmaY: 10),
-                                          child: CarouselSlider(
+                                          child: carousel.CarouselSlider(
                                             items: imageSliders,
                                             carouselController: _controller,
-                                            options: CarouselOptions(
+                                            options: carousel.CarouselOptions(
                                                 autoPlay: true,
                                                 aspectRatio: screenWidth *
                                                     2 /
@@ -291,11 +290,11 @@ class _EventScreenState extends State<EventScreen> {
                                         centerTitle: true,
                                         title: Stack(
                                           children: [
-                                            CarouselSlider(
+                                            carousel.CarouselSlider(
                                               items: imageSliders,
                                               carouselController:
                                               _controller,
-                                              options: CarouselOptions(
+                                              options: carousel.CarouselOptions(
                                                   autoPlay: true,
                                                   aspectRatio: screenWidth *
                                                       2 /

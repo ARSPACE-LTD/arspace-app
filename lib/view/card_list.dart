@@ -77,8 +77,9 @@ class _CardListState extends State<CardList> {
               itemCount: value.cardsModel.data!.length!,
               itemBuilder: (BuildContext context, int index) {
                 return Slidable(
-                  actionPane: SlidableDrawerActionPane(),
-                  actionExtentRatio: 0.25,
+
+                /*  actionPane: SlidableDrawerActionPane(),
+                  actionExtentRatio: 0.25,*/
                   child: GestureDetector(
                     onTap: ()
                     {
@@ -138,7 +139,20 @@ class _CardListState extends State<CardList> {
                 ],
                 ),
                   ),
-                  secondaryActions: [
+                  endActionPane: ActionPane(
+                    motion: const BehindMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          value.DeleteCardList(value.cardsModel.data![index].uuid!, context);
+                        },
+                        backgroundColor: Colors.red,
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      ),
+                    ],
+                  ),
+                 /* secondaryActions: [
                     IconSlideAction(
                       caption: 'Delete',
                       color: Colors.red,
@@ -149,7 +163,7 @@ class _CardListState extends State<CardList> {
                       value.DeleteCardList(value.cardsModel.data![index].uuid!, context)
                       },
                     ),
-                  ],
+                  ],*/
                 );
 
                 /*  return InkWell(

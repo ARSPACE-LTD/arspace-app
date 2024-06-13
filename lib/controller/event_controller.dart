@@ -126,7 +126,7 @@ class EventController extends GetxController {
   }
 
   Future<void> loadStates(String countryCode) async {
-    String data = await rootBundle.loadString('assets/countries_and_states.json');
+    String data = await rootBundle.loadString('asassets/countries_and_states.jsosets/countries_and_states.json');
     List<dynamic> countries = json.decode(data)['countries'];
 
     for (var countryData in countries) {
