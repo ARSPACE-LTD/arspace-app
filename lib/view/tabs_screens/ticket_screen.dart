@@ -354,7 +354,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                                 .data![index]
                                                 .event!
                                                 .location! +"\n"
-                                                : "JIEXPO Kemayoran",
+                                                : "",
                                             //   heading: "JIEXPO Kemayoran",
                                             fontSize: Dimens.eighteen,
                                             maxLines: 2,

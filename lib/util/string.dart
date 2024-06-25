@@ -33,13 +33,11 @@ class AppString {
   static String man = "Man";
   static String woman = "Woman";
   static String interest = "Interest";
-  static String profileName = "Jasper";
   static String account = "Account";
   static String location = "Location";
   static String locate = "Locate";
   static String your_locate = "Your Locate";
   static String recent = "Recent";
-  static String locations = "China,Beijing";
   static String telephone = "Telephone";
   static String card = "credit card";
   static String about = "About Arspace";
@@ -57,11 +55,7 @@ class AppString {
   static String error_cvv = "Please enter the Cvv";
   static String error_firstName = "Please enter the First Name";
   static String error_lastName = "Please enter the Last name";
-  static String event_name = "Jasper 21BottleRock ";
   static String select_ticket = "Select Ticket";
-  static String early_bird_ticket = "Early bird ticket";
-  static String adult_ticket = "Adult ticket";
-  static String chidren_ticket = "Chidren ticket";
   static String quality = "Quantity";
   static String check_out = "Check out";
   static String contact = "Contact";
@@ -76,11 +70,6 @@ class AppString {
   static String filter = "Filter";
   static String card_message = "Please Add Card for Payment";
 
-
-
-
-
-
   static String error_email = "Please enter the email id";
   static String please_enter_valid_email = "Please enter valid email";
   static String enter_password = "Enter Password";
@@ -90,7 +79,6 @@ class AppString {
   static String confirm_error_msg_password = "Please enter the confirm Password";
   static String msg_your_password_doesnt_match = "Your password doesn't matched";
   static String enter_mobileNumber = "Enter your mobile Number";
-  static String demo_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi facilisis Ut lorem ex, congue quis porta non, lacinia laoreet diam. Aliquam et viverra nisl. Nunc non ante risus. Curabitur";
 
   static String Continue = "Continue";
   static String confirm_mobile = "Confirm your mobile";
@@ -98,20 +86,8 @@ class AppString {
   static String mobile_verify = "Enter the verification code we sent to";
   static String notgot_otp = "Didn't get Email ?  ";
   static String resend_sms = "Resend Email";
-  static String bills = "Bills";
-  static String upload_bills = "Upload Bills";
-  static String manage_finance = "Manage your finance properly";
-  static String continue_without_signin = "Continue Without Signing in";
-  static String upload_bills_content = "It’s all about your own pace";
-  static String save_time = "Save Time";
-  static String save_time_content = "Save time while improving your credit";
-  static String legal_time = "Legal name";
-  static String enter_email = "Email address";
-  static String my_legal = "My legal name is:";
   static String signin = "Sign In";
   static String submit = "Submit";
-  static String paymeback = "PayMeBackLater";
-  static String bill_payment_service = "Bill payment service";
   static String login = "Login";
   static String help = "Help";
   static String terms = "Terms";
@@ -124,36 +100,16 @@ class AppString {
   static String expire_date = "Expire Date";
   static String cvc = "CVC";
   static String billing_address = "Billing Address";
-  static String create_your_account = "Create Your Account";
-  static String legal_name = "Legal name";
   static String email_address = "Email Address";
   static String date_of_birth = "Date of birth";
   static String address = "Address";
-  static String social_security = "Social Security";
   static String review = "Review";
-  static String end_text = "Ut lorem ex, congue quis porta non, lacinia laoreet diam. Aliquam et viverra nisl. Nunc non ante risus. Curabitur";
   static String first_name = "First Name";
   static String middle_name = "Middle Name";
   static String last_name = "Last Name";
   static String save = "Save";
   static String cast = "Cast";
   static String detail = "Detail";
-  static String dateOfBirth = "Date of birth";
-  static String error_msg_first_name = "Please enter the first name";
-  static String error_middle_first_name = "Please enter the Middle name";
-  static String error_last_first_name = "Please enter the Last name";
-  static String error_dob = "Please enter the Date of birth";
-  static String error_address = "Please enter the Address";
-  static String error_social_security = "Please enter the Social Security";
-  static String error_review = "Please enter the Review";
-  static String upload_a_bill = "Upload a bill";
-  static String hi_there = "Hi there";
-  static String payments = "PAYMENTS";
-  static String good = "Good";
-  static String all_your_bills = "All your bills in one place";
-  static String all_your_bills_info = "You'll find all your PayMeBackLater bills here,\n ready for whenever you need.";
-  static String upload_first_bill = "Upload your first bill";
   static String match_for_event = "Match For Event";
-  static String bottleRock = "BottleRock NapaValley";
   static String deleteAccount = "Delete Account";
 }

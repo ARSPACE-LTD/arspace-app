@@ -289,10 +289,6 @@ class _MatchScreenState extends State<MatchScreen> {
                                     value.islastCard.value = true ;
 
                                     value.update();
-
-                                    print("thia is last card======================================");
-                                    print("thia is last card======================================");
-
                                   },
 
                                   cardsCount: recordsController.cardDeck.length,
@@ -801,7 +797,7 @@ class _MatchScreenState extends State<MatchScreen> {
                                                         .data![index]
                                                         .event!
                                                         .location!
-                                                        : "775 Rolling Green Rd.",
+                                                        : "",
                                                     // heading: "775 Rolling Green Rd.",
                                                     fontSize: Dimens.forteen,
                                                     color: ThemeProvider

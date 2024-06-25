@@ -44,8 +44,8 @@ class MatchDetailController extends GetxController{
           imgList.add(data.image!);
         });
       } else {
-        imgList.add(
-            "https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU");
+        /*imgList.add(
+            "https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU");*/
       }
 
 

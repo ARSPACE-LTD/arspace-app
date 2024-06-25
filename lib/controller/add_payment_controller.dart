@@ -8,8 +8,7 @@ import '../backend/parser/add_payment_parser.dart';
 class AddPaymentController extends GetxController {
   late AddPaymentParser parser;
 
-  // final countryCodeController = TextEditingController();
- // final mobileNumberController = TextEditingController();
+
   AddPaymentController({required this.parser});
   var has8Char = false.obs;
   var hasLN = false.obs;
@@ -20,8 +19,5 @@ class AddPaymentController extends GetxController {
     Get.toNamed(AppRouter.dashboardScreen);
   }
 
-  // void onBackRoutes() {
-  //   var context = Get.context as BuildContext;
-  //   Navigator.of(context).pop(true);
-  // }
+
 }

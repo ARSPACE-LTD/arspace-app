@@ -27,17 +27,6 @@ Future<void> main() async {
     }
   });
 
-/*  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle.light.copyWith(
-      systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: ThemeProvider.blackColor,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarColor: ThemeProvider.blackColor, // Note RED here
-    ),
-  );
-
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.top]);*/
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarIconBrightness: Brightness.dark, // dark text for status bar
       statusBarColor: Colors.transparent));
@@ -45,17 +34,13 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
- /* SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: ThemeProvider.blackColor, // status bar color
-  ));*/
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

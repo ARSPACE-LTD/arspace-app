@@ -46,7 +46,7 @@ Future<bool> clearCartAlert() async {
       pageBuilder: (context, __, ___) => AlertDialog(
             title: const Text('Warning'),
             content: const Text(
-                "You already have item's in cart with different grocery store"),
+                ""),
             actions: [
               TextButton(
                 onPressed: () {

@@ -43,7 +43,6 @@ class MatchController extends GetxController {
   List<MatchData> getcardList = <MatchData>[];
   RxList<MatchData> cardList_data = <MatchData>[].obs;
   RxList<bool> likeList = <bool>[].obs;
-  List<String> tags_list = <String>[ "tag3fdasdsa" ,"tag3fdqwdw" ];
 
 
   String ? currentTicketUUID ;

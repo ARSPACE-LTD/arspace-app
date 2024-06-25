@@ -98,45 +98,13 @@ class CompleteProfileController extends GetxController {
     }
   }
 
- /* Future<void> pickImages() async {
-    try {
-      final List<XFile>? result = await ImagePicker().pickMultiImage();
 
-      if (result != null ) {
-        // Initialize the list if it's null (user's first time)
-        images ??= [];
-        List<XFile?> croppedImages = [];
-
-        // List to store only the cropped images
-        if (images!.length + images!.length <= 5) {
-          for (XFile imageFile in result) {
-            final croppedImage =
-                await cropImage(imageFile: File(imageFile.path), type: '');
-            if (croppedImage != null) {
-              // Add the cropped image to the list
-              croppedImages.add(croppedImage);
-            }
-          }
-
-          images!.addAll(croppedImages.whereType<XFile>());
-        } else {
-          showToast('You can select only six images or less than six');
-        }
-
-        update();
-      }
-    } catch (e) {
-      // Handle exception
-      print("Error picking images: $e");
-    }
-  }*/
 
   Future<void> pickImages() async {
     try {
       final List<XFile>? result = await ImagePicker().pickMultiImage();
 
       if (result != null) {
-        // Initialize the list if it's null (user's first time)
         images ??= [];
         List<XFile?> croppedImages = [];
 

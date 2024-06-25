@@ -95,9 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  /*"https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU",*/
                                   value.geteventResponse.data?[value.imageIndex].images != null && value.geteventResponse.data![value.imageIndex].images!.isNotEmpty
-                                      ? value.geteventResponse.data![value.imageIndex].images![0].image! : "https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU",
+                                      ? value.geteventResponse.data![value.imageIndex].images![0].image! : "",
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -310,9 +309,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
                                     child: Image.network(
-                                      //"https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU",
                                       value.geteventResponse.data?[index].images != null && value.geteventResponse.data![index].images!.isNotEmpty
-                                          ? value.geteventResponse.data![index].images![0].image! : "https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU",
+                                          ? value.geteventResponse.data![index].images![0].image! : "",
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -459,7 +457,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "This Week",
-            
                             style: TextStyle(
                               fontSize: 28,
                               color: ThemeProvider.whiteColor.withOpacity(0.85),
@@ -469,7 +466,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Text(
                             "More",
-                            // '\$221',
                             style: TextStyle(
                               fontSize: 14,
                               color: ThemeProvider.whiteColor.withOpacity(0.85),
@@ -513,7 +509,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.network(
                                         value.geteventResponse.data?[index].images != null && value.geteventResponse.data![index].images!.isNotEmpty
-                                            ? value.geteventResponse.data![index].images![0].image! : "https://fastly.picsum.photos/id/1024/200/300.jpg?hmac=Zf-5s5sbTMmFYhm-_rzZXktzs5i_ES8dVOzXPCS6zxU",
+                                            ? value.geteventResponse.data![index].images![0].image! : "",
                                         fit: BoxFit.cover,
                                       ),
                                     ),

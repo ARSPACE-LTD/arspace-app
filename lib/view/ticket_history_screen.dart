@@ -312,7 +312,7 @@ class _TicketHistoryScreenState extends State<TicketHistoryScreen> {
                                         .data![index]
                                         .event!
                                         .location! +"\n"
-                                        : "JIEXPO Kemayoran",
+                                        : "",
                                     //   heading: "JIEXPO Kemayoran",
                                     fontSize: Dimens.eighteen,
                                     color: Colors.black,

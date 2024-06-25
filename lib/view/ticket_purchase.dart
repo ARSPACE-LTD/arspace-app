@@ -294,7 +294,7 @@ class _TicketPurchasedState extends State<TicketPurchased> {
                                                               null
                                                               ? logic.orderResponse.data!
                                                               .event!.location! + "\n"
-                                                              : "775 Rolling Green Rd.",
+                                                              : "",
                                                           // heading: "775 Rolling Green Rd.",
                                                           fontSize: Dimens.fifteen,
                                                           maxLines: 2,

@@ -354,13 +354,6 @@ class EventController extends GetxController {
       // Your Stripe publishable key
       final String publishableKey = 'pk_test_51Oc3GII7EzDgVa3Ho0JqtnrOr83AeT7s1MqR7ms3fed3Cv8kSFM4tWNIJET69IEbfYJZGqFsZJq4EZApPCjXm5wD00abojyqMG';
 
-
-      /*final Map<String, dynamic> cardData = {
-        'card[number]': '4242424242424242',
-        'card[exp_month]': '12',
-        'card[exp_year]': '2',
-        'card[cvc]': '123',
-      };*/
       final Map<String, dynamic> cardData = {
         'card[number]': '${creditCardNumber.text.toString()}',
         'card[exp_month]': '$month',

@@ -93,67 +93,7 @@ class ForgotControler extends GetxController{
       }
       update();
 
-    // Future<void> googleSignIn() async {
-    //   String? email;
-    //   String? token;
-    //   final GoogleSignIn googleSignIn = GoogleSignIn();
-    //   final isAlreadySignIn = await googleSignIn.isSignedIn();
-    //   if (isAlreadySignIn) {
-    //     await googleSignIn.signOut();
-    //   }
-    //   final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-    //   email = googleSignInAccount?.email;
-    //   print("email==> $email");
-    //
-    //   if (googleSignInAccount != null) {
-    //     final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
-    //     print(googleSignInAuthentication.accessToken);
-    //   }
-    //   //   controller.login(email!, "socials");
-    // }
-    //
-    // Future<void> faceBookSignUp() async {
-    //   final fb = FacebookLogin();
-    //   final isAlreadyLogin = await fb.isLoggedIn;
-    //   if (isAlreadyLogin) {
-    //     await fb.logOut();
-    //   }
-    //
-    //   final res = await fb.logIn(permissions: [
-    //     FacebookPermission.publicProfile,
-    //     FacebookPermission.email,
-    //   ]);
-    //
-    //   switch (res.status) {
-    //     case FacebookLoginStatus.success:
-    //       final FacebookAccessToken? accessToken = res.accessToken;
-    //       print('Access token: ${accessToken?.token}');
-    //       final profile = await fb.getUserProfile();
-    //       print('Hello, ${profile?.name}! You ID: ${profile?.userId}');
-    //       final imageUrl = await fb.getProfileImageUrl(width: 100);
-    //       print('Your profile image: $imageUrl');
-    //       final emailuser = await fb.getUserEmail();
-    //       if (emailuser != null) {
-    //         print('And your email is $emailuser');
-    //
-    //         if (emailuser.isEmpty) {
-    //           print("User login failed");
-    //         } else {
-    //           String token = accessToken!.token;
-    //           // controller.login(emailuser, "socials");
-    //           // Get.find<ApiClient>().socialLoginService(email ,token);
-    //         }
-    //       }
-    //       break;
-    //     case FacebookLoginStatus.cancel:
-    //       // User cancel log in
-    //       break;
-    //     case FacebookLoginStatus.error:
-    //       // Log in failed
-    //       print('Error while log in: ${res.error}');
-    //       break;
-    //   }
-    // }
+
 
     void onBackRoutes() {
       var context = Get.context as BuildContext;

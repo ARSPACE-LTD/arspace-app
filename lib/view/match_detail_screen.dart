@@ -236,13 +236,12 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 22.0),
                           child: CommonTextWidget(
-                                                    //    heading: "Hi! I'm Hannah. I live in California. I really like fashion things like watching concerts",
                             heading: value.profileInfoModel.data
                                 ?.intro !=
                                 null
                                 ? value.profileInfoModel.data
                                 ?.intro
-                                : "Hi! I'm Hannah. I live in California. I really like fashion things like watching concerts",
+                                : "",
                             fontSize: Dimens.eighteen,
                             color: ThemeProvider.text_light_gray,
                             textAlign: TextAlign.start,
