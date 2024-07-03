@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'backend/helper/app_router.dart';
 import 'backend/helper/init.dart';
 
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MainBinding().dependencies();

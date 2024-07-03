@@ -55,10 +55,8 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
   XFile? selectedImage;
   var profile_image;
 
-  // String? audioFilePath;
-  // audioplayers.PlayerState audioPlayerState = audioplayers.PlayerState.STOPPED;
-  late audioplayers.AudioPlayer audioPlayer;
-  late List<audioplayers.PlayerState> audioPlayerStates;
+  late audioplayers.AudioPlayer audioPlayer; // Use audioplayers.AudioPlayer
+  late List<audioplayers.PlayerState> audioPlayerStates; // Use audioplayers.PlayerState
 
   FlutterSoundRecorder _audioRecorder = FlutterSoundRecorder();
   bool isRecording = false;
@@ -67,15 +65,13 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
   late ScrollController _scrollController;
   FocusNode? myFocusNode;
 
-  //_scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-
     myFocusNode = FocusNode();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(myFocusNode);
     });
 
@@ -85,112 +81,63 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     name = Get.arguments[1].toString();
     type = Get.arguments[2].toString();
 
-    chatInboxController.getRoomMessage(roomId).then((value) =>
-    {
+    chatInboxController.getRoomMessage(roomId).then((value) {
       audioPlayerStates = List.filled(
           chatInboxController.roomChatList.length,
-          audioplayers.PlayerState.stopped),
+          audioplayers.PlayerState.stopped);
 
-      print("======= call down function roomId"),
-
-      //_scrollToBottom(1000)
-      move_down(0)
+      move_down(0);
     });
 
     token = chatInboxController.parser.sharedPreferencesManager
-        .getString('token') ??
-        '';
-    UUID =
-        chatInboxController.parser.sharedPreferencesManager.getString('UUID') ??
-            '';
-
-    print("token=== $token");
-    print("UUID=== $UUID");
+        .getString('token') ?? '';
+    UUID = chatInboxController.parser.sharedPreferencesManager.getString('UUID') ?? '';
 
     if (type == "group") {
       channel = WebSocketChannel.connect(
-        //old
-        // Uri.parse('ws://34.135.45.97/ws/group/$roomId?token=$token'),
-        //new
-        //Uri.parse('ws://34.121.97.111/ws/group/$roomId?token=$token'),
         Uri.parse("${Environments.webSoketURL}" + "group/$roomId?token=$token"),
       );
-
-      /* channel = WebSocketChannel.connect(
-        Uri.parse('ws://34.135.45.97/ws/private/$roomId?token=$token'),
-      );*/
     } else {
       channel = WebSocketChannel.connect(
-        // Uri.parse('ws://34.121.97.111/ws/private/$roomId?token=$token'),
-        Uri.parse(
-            "${Environments.webSoketURL}" + "private/$roomId?token=$token"),
+        Uri.parse("${Environments.webSoketURL}" + "private/$roomId?token=$token"),
       );
     }
 
-    setState(() {
-      channel!.stream.listen(
-        /*channel.stream.listen(*/
-            (message) {
-          setState(() {
-            Map<String, dynamic> jsonData = jsonDecode(message);
+    channel.stream.listen((message) {
+      setState(() {
+        Map<String, dynamic> jsonData = jsonDecode(message);
+        if (jsonData.containsKey("messages")) {
+          chatInboxController.roomChatList.clear();
+          List<dynamic> messages = jsonData["messages"];
+          for (int i = messages.length - 1; i >= 0; i--) {
+            var messageData = messages[i];
+            chatInboxController.roomChatList.add(ChatBoxModelData.fromJson(messageData));
+          }
+        }
 
-            // Check if the message contains a "messages" key
-            if (jsonData.containsKey("messages")) {
-              // Extract the list of messages
-              chatInboxController.roomChatList.clear();
-              List<dynamic> messages = jsonData["messages"];
+        audioPlayerStates = List.filled(
+            chatInboxController.roomChatList.length,
+            audioplayers.PlayerState.stopped);
 
-              // Iterate over the list of messages in reverse order
-              for (int i = messages.length - 1; i >= 0; i--) {
-                var messageData = messages[i];
-                chatInboxController.roomChatList
-                    .add(ChatBoxModelData.fromJson(messageData));
-              }
-            }
-
-            audioPlayerStates = List.filled(
-                chatInboxController.roomChatList.length,
-                audioplayers.PlayerState.stopped);
-
-            chatInboxController.update();
-
-            print("WebSocketChannel data: $message");
-            Future.delayed(Duration.zero, () {
-              print("down to botttom _scrollToBottom");
-
-              _scrollToBottom(300);
-            });
-          });
-        },
-        onError: (error) {
-          print("WebSocketChannel error: $error");
-          // Handle WebSocket errors here
-        },
-        onDone: () {
-          print("=======call onDone down function stream");
-          // move_down(1000);
-        },
-      );
+        chatInboxController.update();
+        Future.delayed(Duration.zero, () {
+          _scrollToBottom(300);
+        });
+      });
+    }, onError: (error) {
+      print("WebSocketChannel error: $error");
     });
 
     audioPlayer = audioplayers.AudioPlayer();
-
     audioPlayer.onPlayerStateChanged.listen((audioplayers.PlayerState state) {
       setState(() {
         audioPlayerStates[currentrecordingIndex!] = state;
       });
     });
 
-    print("======= call down function outer");
-
     Future.delayed(Duration.zero, () {
       _scrollToBottom(300);
     });
-
-    // move_down(1000);
-
-    // isRecording = false;
-    // mainfilePath = '';
   }
 
   @override
@@ -202,16 +149,15 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     super.dispose();
   }
 
-  move_down(int seconds) {
+  void move_down(int seconds) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      // Add a delay before scrolling to ensure the ListView is fully populated
       Future.delayed(Duration(milliseconds: seconds), () {
         _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
       });
     });
   }
 
-  _scrollToBottom(int millisecond) {
+  void _scrollToBottom(int millisecond) {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
       duration: Duration(milliseconds: millisecond),
@@ -219,33 +165,18 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     );
   }
 
-  // void _play(String filePath, int index) {
-  //   // Stop all other players before starting a new one
-  //   _stopAllPlayers();
-  //   audioPlayer.play(filePath);
-  //   setState(() {
-  //     currentrecordingIndex = index;
-  //     audioPlayerStates[index] = audioplayers.PlayerState.playing;
-  //   });
-  // }
-
-
   void _play(String filePath, int index) {
-    // Stop all other players before starting a new one
     _stopAllPlayers();
-    audioPlayer.play(filePath as audioplayers.Source);
+    audioPlayer.play(audioplayers.DeviceFileSource(filePath));
     setState(() {
       currentrecordingIndex = index;
       audioPlayerStates[index] = audioplayers.PlayerState.playing;
     });
   }
 
-// Pause audio
   void _pause() {
     audioPlayer.pause();
-    // Find the index of the currently playing item and update its state
-    int playingIndex =
-    audioPlayerStates.indexOf(audioplayers.PlayerState.playing);
+    int playingIndex = audioPlayerStates.indexOf(audioplayers.PlayerState.playing);
     if (playingIndex != -1) {
       setState(() {
         audioPlayerStates[playingIndex] = audioplayers.PlayerState.paused;
@@ -253,35 +184,12 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
     }
   }
 
-// Stop audio
-  void _stop() {
-    audioPlayer.stop();
-    // Find the index of the currently playing item and update its state
-    int playingIndex =
-    audioPlayerStates.indexOf(audioplayers.PlayerState.playing);
-    if (playingIndex != -1) {
-      setState(() {
-        audioPlayerStates[playingIndex] = audioplayers.PlayerState.stopped;
-      });
-    }
-  }
-
-// Stop all audio players
   void _stopAllPlayers() {
     audioPlayer.stop();
     setState(() {
-      // Reset all player states to STOPPED
-      audioPlayerStates = List.filled(chatInboxController.roomChatList.length,
+      audioPlayerStates = List.filled(
+          chatInboxController.roomChatList.length,
           audioplayers.PlayerState.stopped);
-    });
-  }
-
-// Subscribe to player state changes
-  void _subscribeToPlayerStateChanges() {
-    audioPlayer.onPlayerStateChanged.listen((audioplayers.PlayerState state) {
-      setState(() {
-        // Not necessary to update player state here as it's being managed by audioPlayerStates list
-      });
     });
   }
 
@@ -289,31 +197,28 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
       BuildContext context) async {
     if (!await _checkPermission()) return;
 
-    //  final Directory? appDirectory = await getExternalStorageDirectory();
-
     Directory? appDirectory;
     if (Platform.isAndroid) {
       appDirectory = await getExternalStorageDirectory();
     } else if (Platform.isIOS) {
       appDirectory = await getApplicationDocumentsDirectory();
     } else {
-      // Handle other platforms if needed
       throw UnsupportedError('Unsupported platform');
     }
+
     final String filePath = '${appDirectory!.path}/audio_recording.aac';
 
-    /* try {*/
-    await _audioRecorder.openRecorder();
-    await _audioRecorder.startRecorder(toFile: filePath);
-    setState(() {
-      print("isRecording is update");
-      isRecording = true;
-      chatInboxController.update();
-      mainfilePath = filePath;
-    });
-    /*} catch (e) {
+    try {
+      await _audioRecorder.openRecorder();
+      await _audioRecorder.startRecorder(toFile: filePath);
+      setState(() {
+        isRecording = true;
+        chatInboxController.update();
+        mainfilePath = filePath;
+      });
+    } catch (e) {
       print('Failed to start recording: $e');
-    }*/
+    }
   }
 
   Future<void> _stopRecording(ChatInboxController controller,
@@ -329,8 +234,6 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
         controller.UploadImage(null, mainfilePath, "recorder", context)
             .then((value) {
           if (isWebSocketConnected()) {
-            print('Socket is connected!');
-
             var message = {
               "message": controller.messageController.text.toString(),
               "attachment": controller.attached_image,
@@ -342,7 +245,6 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
             controller.attached_image = "";
           } else {
             print('Socket is not connected!');
-            // Handle case when socket is not connected
           }
         });
       }
@@ -354,9 +256,7 @@ class _ChatInboxScreenState extends State<ChatInboxScreen> {
   Future<bool> _checkPermission() async {
     var status = await Permission.microphone.status;
     if (!status.isGranted) {
-      if (await Permission.microphone
-          .request()
-          .isGranted) {
+      if (await Permission.microphone.request().isGranted) {
         return true;
       } else {
         return false;

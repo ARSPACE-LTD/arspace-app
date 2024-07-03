@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:arspace/backend/helper/app_router.dart';
@@ -9,6 +10,7 @@ import 'package:arspace/util/all_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -161,7 +163,10 @@ class _EventScreenState extends State<EventScreen> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            Get.back();
+
+                                          //  Get.back();
+                                            Get.offAllNamed(AppRouter.dashboardScreen) ;
+
                                           },
                                           child: CircleAvatar(
                                             maxRadius: screenWidth * 0.055,
@@ -179,18 +184,32 @@ class _EventScreenState extends State<EventScreen> {
                                         Row(children: [
                                           GestureDetector(
                                             onTap: () {
-                                              if (logic.parser
+
+                                              String baseUrl = Platform.isIOS ? 'https://arspace.website/event/ios'
+                                                  :'https://arspace.website/event/android';
+                                              String shareUrl = '$baseUrl/$UUId';
+                                              Share.share('Hi! Download Arspace app: $shareUrl');
+
+                                              /*if (logic.parser
                                                   .CheckToken() !=
                                                   null &&
                                                   logic.parser
                                                       .CheckToken()
                                                       .isNotEmpty) {
-                                                Share.share(
-                                                    'Hi! Download Arspace app http://www.Arspace.com');
+
+
+                                                *//*Share.share(
+                                                    'Hi! Download Arspace app http://www.Arspace.com');*//*
+
+
+                                                   String baseUrl = 'http://arspace.website/event/android';
+                                                   String shareUrl = '$baseUrl/$UUId';
+                                                   Share.share('Hi! Download Arspace app: $shareUrl');
+
                                               } else {
                                                 Share.share(
                                                     'Hi! Download Arspace app http://www.Arspace.com');
-                                              }
+                                              }*/
                                             },
                                             child: CircleAvatar(
                                               maxRadius:
@@ -2549,7 +2568,6 @@ class _EventScreenState extends State<EventScreen> {
 
     return null;
   }
-
 
 
 }

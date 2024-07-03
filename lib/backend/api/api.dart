@@ -201,6 +201,9 @@ class ApiService extends GetxService {
   Future<Response> postPublic(String uri, dynamic body,
       {Map<String, String>? headers}) async {
     try {
+      print("login url === ${appBaseUrl + uri}");
+      print("login body === ${body.toString()}");
+
       http.Response response = await http
           .post(
             Uri.parse(appBaseUrl + uri),
