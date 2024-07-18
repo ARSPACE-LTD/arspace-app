@@ -83,6 +83,7 @@ class EventController extends GetxController {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController streetAddressController = TextEditingController();
   TextEditingController adressController = TextEditingController();
+  TextEditingController postCodeController = TextEditingController();
 
   int? month ;
   int? year ;
@@ -454,6 +455,7 @@ class EventController extends GetxController {
        lastNameController.clear();
        streetAddressController.clear();
        adressController.clear();
+       postCodeController.clear();
 
 
       Map<String, dynamic> myMap = Map<String, dynamic>.from(response.body);

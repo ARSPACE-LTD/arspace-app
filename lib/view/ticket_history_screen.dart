@@ -327,11 +327,11 @@ class _TicketHistoryScreenState extends State<TicketHistoryScreen> {
                                     .ticketResponse
                                     .data![index]
                                     .event!
-                                    .created_at_utc != null ? timestampToString( value
+                                    .time != null ? formatTime( value
                                       .ticketResponse
                                       .data![index]
                                       .event!
-                                      .created_at_utc! ,"") : "",
+                                      .time! ) : "",
                                   fontSize: Dimens.eighteen,
                                   color: Colors.black,
                                   fontFamily: 'PingFang',
@@ -415,6 +415,13 @@ class _TicketHistoryScreenState extends State<TicketHistoryScreen> {
     }
 
     return formattedDate;
+  }
+
+  String formatTime(String time) {
+    DateFormat inputFormat = DateFormat('HH:mm:ss');
+    DateFormat outputFormat = DateFormat('HH:mm');
+    DateTime dateTime = inputFormat.parse(time);
+    return outputFormat.format(dateTime);
   }
 }
 

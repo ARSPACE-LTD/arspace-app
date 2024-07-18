@@ -26,6 +26,9 @@ class ApiService extends GetxService {
   }
 
   Future<Response> getPrivate(String uri, String token) async {
+
+    print("ticketResponse body1--->${appBaseUrl + uri}");
+    print("ticketResponse body1--->${token}");
     try {
      /* http.Response response = await http.get(Uri.parse(appBaseUrl + uri),
           headers: {

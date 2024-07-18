@@ -430,7 +430,7 @@ class _EventScreenState extends State<EventScreen> {
                                   )),
                               SliverToBoxAdapter(
                                 child: SizedBox(
-                                  height: screenHeight * 0.75,
+                                  height: screenHeight ,
                                   width: screenWidth,
                                   child: Container(
                                     height: screenHeight * 0.8,
@@ -601,12 +601,15 @@ class _EventScreenState extends State<EventScreen> {
                                                         heading: eventController
                                                             .geteventInfo
                                                             .data
-                                                            ?.created_at_utc !=
+                                                            ?.time !=
                                                             null
-                                                            ? timestampToString(eventController
+                                                            ? formatDate(eventController
                                                             .geteventInfo
                                                             .data!
-                                                            .created_at_utc!)
+                                                            .date!) +"  " +formatTime(eventController
+                                                            .geteventInfo
+                                                            .data!
+                                                            .time!)
                                                             : "",
                                                         //  heading: "Dec 7, 2019 23:26",
                                                         fontSize:
@@ -774,6 +777,7 @@ class _EventScreenState extends State<EventScreen> {
                                               ),
                                             )
                                                 : Container(),
+
                                             SizedBox(
                                               height: screenHeight * 0.04,
                                             ),
@@ -788,18 +792,30 @@ class _EventScreenState extends State<EventScreen> {
                                             SizedBox(
                                                 height:
                                                 screenHeight * 0.02),
+                                            Container(
+                                              margin: EdgeInsets.only(bottom: 150),
+                                              child: CommonTextWidget(
+                                                heading: eventController.geteventInfo.data?.description != null
+                                                    ? Utf8Decoder().convert(eventController.geteventInfo.data!.description!.codeUnits)
+                                                    : "",
+                                                fontSize: Dimens.sixteen,
+                                                color: ThemeProvider.text_light_gray,
+                                                fontFamily: 'Intern',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+
+                                            SizedBox(height: 150,) ,
                                             CommonTextWidget(
-                                              heading: eventController.geteventInfo.data?.description != null
-                                                  ? Utf8Decoder().convert(eventController.geteventInfo.data!.description!.codeUnits)
-                                                  : "",
-                                              fontSize: Dimens.sixteen,
-                                              color: ThemeProvider.text_light_gray,
-                                              fontFamily: 'Intern',
+                                              heading: AppString.detail,
+                                              fontSize: Dimens.twentyFour,
+                                              color:
+                                              ThemeProvider.whiteColor,
+                                              fontFamily: 'Lexend',
                                               fontWeight: FontWeight.w400,
                                             ),
-                                            SizedBox(
-                                                height:
-                                                screenHeight * 0.90),
+
+
                                           ],
                                         ),
                                       ),
@@ -1331,8 +1347,14 @@ class _EventScreenState extends State<EventScreen> {
                                             SvgPicture.asset(AssetPath.clock),
                                             SizedBox(width: 10),
                                             CommonTextWidget(
-                                              heading: eventController.geteventInfo.data?.created_at_utc != null
-                                                  ? timestampToString(eventController.geteventInfo.data!.created_at_utc!)
+                                              heading: eventController.geteventInfo.data?.time != null
+                                                  ? formatDate(eventController
+                                                  .geteventInfo
+                                                  .data!
+                                                  .date!) +"  " +formatTime(eventController
+                                                  .geteventInfo
+                                                  .data!
+                                                  .time!)
                                                   : "",
                                               fontSize: Dimens.forteen,
                                               color: ThemeProvider.text_light_gray,
@@ -1370,9 +1392,9 @@ class _EventScreenState extends State<EventScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 30,
                             ),
-                            Row(
+                           /* Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CommonTextWidget(
@@ -1401,7 +1423,7 @@ class _EventScreenState extends State<EventScreen> {
                             ),
                             SizedBox(
                               height: 30,
-                            ),
+                            ),*/
                             GestureDetector(
                               onTap: () {
                                 // Navigator.of(context).pop();
@@ -2167,7 +2189,7 @@ class _EventScreenState extends State<EventScreen> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  eventController.ShowCountryPicker(context);
+                                //  eventController.ShowCountryPicker(context);
                                 },
                                 child: Row(
                                   mainAxisAlignment:
@@ -2184,16 +2206,16 @@ class _EventScreenState extends State<EventScreen> {
                                                       ""
                                               ? eventController
                                                   .selectedCountry.value
-                                              : "United States",
+                                              : "Canada",
                                           fontSize: Dimens.eighteen,
                                           color: ThemeProvider.whiteColor,
                                           fontFamily: 'Intern',
                                         )),
-                                    Icon(
+                                    /*Icon(
                                       Icons.arrow_forward_ios_outlined,
                                       color: ThemeProvider.text_light_gray,
                                       size: 12,
-                                    ),
+                                    ),*/
                                   ],
                                 ),
                               ),
@@ -2209,14 +2231,28 @@ class _EventScreenState extends State<EventScreen> {
                               ),
                               CustomTextField(
                                 controller:
-                                    eventController.streetAddressController,
-                                hintText: "Street Address",
+                                eventController.postCodeController,
+                                hintText: "Postal Code",
+                                maxLength: 6,
                                 keyboardType: TextInputType.text,
                                 backgroundColor: ThemeProvider.text_background,
                                 validator: (value) {
                                   /* if (value == null || value.isEmpty) {
                                     return AppString.error_userName;
                                   }*/
+                                  return null;
+                                },
+                              ),
+                              /*CustomTextField(
+                                controller:
+                                    eventController.streetAddressController,
+                                hintText: "Street Address",
+                                keyboardType: TextInputType.text,
+                                backgroundColor: ThemeProvider.text_background,
+                                validator: (value) {
+                                  *//* if (value == null || value.isEmpty) {
+                                    return AppString.error_userName;
+                                  }*//*
                                   return null;
                                 },
                               ),
@@ -2230,9 +2266,9 @@ class _EventScreenState extends State<EventScreen> {
                                 keyboardType: TextInputType.text,
                                 backgroundColor: ThemeProvider.text_background,
                                 validator: (value) {
-                                  /*if (value == null || value.isEmpty) {
+                                  *//*if (value == null || value.isEmpty) {
                                     return AppString.error_userName;
-                                  }*/
+                                  }*//*
                                   return null;
                                 },
                               ),
@@ -2255,9 +2291,9 @@ class _EventScreenState extends State<EventScreen> {
                                     eventController.loadStates(
                                         eventController.selectedCountry.value);
                                   }
-                                  /*eventController.states != null
+                                  *//*eventController.states != null
                                       ? showStateDialog(eventController)
-                                      : SizedBox.shrink();*/
+                                      : SizedBox.shrink();*//*
                                 },
                                 child: Row(
                                   mainAxisAlignment:
@@ -2284,7 +2320,7 @@ class _EventScreenState extends State<EventScreen> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ),*/
                               SizedBox(
                                 height: 25,
                               ),
@@ -2293,7 +2329,7 @@ class _EventScreenState extends State<EventScreen> {
                                 color: ThemeProvider.dividerColor,
                               ),
                               SizedBox(
-                                height: 40,
+                                height: 100,
                               ),
                               /* SubmitButton(
                                   onPressed: () {
@@ -2375,9 +2411,23 @@ class _EventScreenState extends State<EventScreen> {
     // Format the DateTime object
     String formattedDateTime = DateFormat('MMMM dd, yyyy HH:mm').format(dateTime);
 
+
     return formattedDateTime;
   }
 
+  String formatDate(String date) {
+    DateFormat inputFormat = DateFormat('yyyy-MM-dd');
+    DateFormat outputFormat = DateFormat('MMMM dd, yyyy');
+    DateTime dateTime = inputFormat.parse(date);
+    return outputFormat.format(dateTime);
+  }
+
+  String formatTime(String time) {
+    DateFormat inputFormat = DateFormat('HH:mm:ss');
+    DateFormat outputFormat = DateFormat('HH:mm');
+    DateTime dateTime = inputFormat.parse(time);
+    return outputFormat.format(dateTime);
+  }
 
 /*  String TimeFormate(String date, String time) {
     DateTime dateTime = DateTime.parse("$date $time");

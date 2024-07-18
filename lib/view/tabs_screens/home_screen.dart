@@ -464,7 +464,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                          Text(
+                          /*Text(
                             "More",
                             style: TextStyle(
                               fontSize: 14,
@@ -472,7 +472,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w400,
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ),

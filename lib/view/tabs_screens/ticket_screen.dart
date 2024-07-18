@@ -371,12 +371,12 @@ class _TicketScreenState extends State<TicketScreen> {
                                               .ticketResponse
                                               .data![index]
                                               .event!
-                                              .created_at_utc != null ? timestampToString(
+                                              .time != null ? formatTime(
                                               value
                                               .ticketResponse
                                               .data![index]
                                               .event!
-                                              .created_at_utc!,"") : "",
+                                              .time!) : "",
                                           fontSize: Dimens.eighteen,
                                           color: Colors.black,
                                           fontFamily: 'PingFang',
@@ -505,6 +505,13 @@ class _TicketScreenState extends State<TicketScreen> {
     }
 
     return formattedDate;
+  }
+
+  String formatTime(String time) {
+    DateFormat inputFormat = DateFormat('HH:mm:ss');
+    DateFormat outputFormat = DateFormat('HH:mm');
+    DateTime dateTime = inputFormat.parse(time);
+    return outputFormat.format(dateTime);
   }
 
   Future<Widget> LoginPopUp() async {

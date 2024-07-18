@@ -358,7 +358,7 @@ class _MatchScreenState extends State<MatchScreen> {
                         Center(
                           child: CommonTextWidget(
                             textAlign: TextAlign.center,
-                            heading: value.islastCard == true ? "You’ve swapped all the other users" :value.isfiltter_message == true ?
+                            heading: value.islastCard == true ? "You’ve swapped all the other users" :value.isfiltter_message == true || value.ticketResponse != null?
                             "No users found matching your criteria. Please try adjusting your filters." :
                             "You can’t match if you haven’t purchased a ticket.",
                             fontSize: Dimens.twenty,
