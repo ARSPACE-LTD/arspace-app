@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:955647790107:android:058be0e772285e11823cbe",
+        "android_client_info": {
+          "package_name": "com.arspace_tech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOQHGsA1DwurZDL2n1BpExRJQZhVirZ7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:955647790107:android:41e34cec864d376a823cbe",
         "android_client_info": {
           "package_name": "com.arspace_technology"
