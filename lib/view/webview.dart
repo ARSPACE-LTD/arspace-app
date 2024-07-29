@@ -10,7 +10,11 @@ import '../util/theme.dart';
 import '../widgets/commontext.dart';
 
 class TermsWebView extends StatefulWidget {
-  const TermsWebView({super.key});
+  final String link_type;
+
+  TermsWebView({required this.link_type});
+
+  //const TermsWebView({super.key});
 
   @override
   State<TermsWebView> createState() => _TermsWebViewState();
@@ -37,7 +41,7 @@ class _TermsWebViewState extends State<TermsWebView> {
             ),
           ),
           title: CommonTextWidget(
-            heading: "Help",
+            heading: widget.link_type,
             fontSize: Dimens.twenty,
             color: ThemeProvider.whiteColor,
             fontFamily: 'Lexend',
@@ -46,7 +50,7 @@ class _TermsWebViewState extends State<TermsWebView> {
       body: Stack(
         children: [
           WebView(
-            initialUrl: 'https://geekinformatic.com/privacy-policy-2/', // Replace this with your URL
+            initialUrl: widget.link_type == AppString.terms ? "https://arspace.website/privacy-policy" :"https://arspace.website/contact", // Replace this with your URL
             javascriptMode: JavascriptMode.unrestricted,
             onPageStarted: (String url) {
               setState(() {

@@ -19,17 +19,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.2</string>
+	<string>1.0.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>FLTEnableImpeller</key>
-	<false/>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<key>CFBundleURLName</key>
+	<string>com.arspace</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -39,29 +33,31 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FLTEnableImpeller</key>
+	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>Arspace</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>com.apple.developer.associated-domains</key>
-	<array>
-		<string>applinks:arspace.website</string>
-	</array>
-	<key>CFBundleURLName</key>
-	<string>com.arspace</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>Arspace</string>
-	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires camera access to allow you to send images in chat.</string>
 	<key>NSFileProviderDomainUsageDescription</key>
 	<string>This app requires file access to allow you to manage and share files.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requires location access to show nearby events based on your location.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires location access to show nearby events based on your location.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>This app requires location access to show nearby events based on your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app requires location access to show nearby events based on your location.</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -89,5 +85,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:arspace.website</string>
+	</array>
 </dict>
 </plist>

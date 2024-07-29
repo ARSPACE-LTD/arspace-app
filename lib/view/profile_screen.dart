@@ -276,11 +276,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: screenHeight * 0.055,
                           ),
                           GestureDetector(
+
                             onTap: () {
                               connectivityService.isConnected.value
                                   ? Navigator.of(context).push(
                                       MaterialPageRoute(
-                                          builder: (context) => TermsWebView()))
+                                          builder: (context) =>  TermsWebView(link_type: AppString.help)))
                                   : showToast(AppString.internet_connection);
                             },
                             child: Padding(
@@ -312,7 +313,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               connectivityService.isConnected.value
                                   ? Navigator.of(context).push(
                                   MaterialPageRoute(
-                                      builder: (context) => TermsWebView()))
+                                      builder: (context) =>  TermsWebView(link_type: AppString.terms)))
                                   : showToast(AppString.internet_connection);
 
 
